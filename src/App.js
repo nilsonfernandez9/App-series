@@ -1,6 +1,6 @@
-import { BrowserRouter as Router,  Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-//Components
+//Componenentes
 import Navbar from "./components/Navbar";
 
 //Paginas
@@ -11,15 +11,13 @@ import Single from './pages/Single';
 const App = () => {
   return (
     <Router>
-      {/* Navbar */}
       <Navbar /> 
       <div className="container">
-        <Switch>
+        <Routes>
           <Route exact path="/" component={Inicio}/>
           <Route exact path="/about" component={About}/>
           <Route path="/singleshow/:id" component={Single}/>
-        </Switch>
-
+        </Routes>
       </div>
     </Router>
   )

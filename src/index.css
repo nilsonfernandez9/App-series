@@ -91,3 +91,58 @@ body {
   border: 1px solid var(--secondary-color);
   box-shadow: 0 0 1px 1px rgba(41, 197, 101, 0);
 }
+
+/*Estilos de alerta*/
+.alert {
+  padding: 10px 17px;
+  font-size: 20px;
+  border: 1px solid var(--dark-color);
+  margin: 2rem 0;
+}
+
+.alert-warning {
+  background: blanchedalmond;
+  border: 1px solid yellow;
+}
+
+.alert-danger {
+  background: rgb(223, 133, 133);
+  border: 1px solid red;
+}
+
+.alert-info {
+  background: rgb(236, 236, 236);
+  border: 1px solid rgb(18, 2, 255);
+}
+
+/*Estilos de ListItem*/
+
+.listitem {
+  text-decoration: none;
+  width: 210px;
+  background: var(--offwhite-color);
+  box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1),
+    0 3px 1px 0 rgba(20, 23, 28, 0.1);
+  margin: 1rem auto;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.listitem:hover {
+  transform: scale(1.03);
+}
+
+.listitem__info {
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.info__name {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.info__rating {
+  color: var(--secondary-color);
+  padding: 5px;
+}

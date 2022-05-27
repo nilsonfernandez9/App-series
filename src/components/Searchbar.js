@@ -1,29 +1,46 @@
-import {useState} from 'react';
+import { useState, useContext } from "react";
+
+// Context
+import ShowsContext from "../context/shows/showsContext";
+import AlertsContext from "../context/alerts/alertsContext";
+
+// Components
+import Alert from "./Alert";
 
 const Searchbar = () => {
-    const [searchTerm, setsearchTerm] = useState ("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const onSearchHandler = (e) => {
-        e.preventDefault();
+  const showsContext = useContext(ShowsContext);
+  const { searchShows } = showsContext;
 
-        console.log ("Searching for term" + setsearchTerm);
-    };
+  const { alert, setAlert } = useContext(AlertsContext);
+
+  const onSearchHandler = (e) => {
+    e.preventDefault();
+
+    if (searchTerm === "") {
+      setAlert("Please enter something", "danger");
+    } else {
+      searchShows(searchTerm);
+    }
+  };
 
   return (
     <div className="searchbar">
-        <form className="searchbar__form"/>
-            <input type="text"
-                placeholder="Barra de busqueda de series"
-                value={searchTerm}
-                onChange={(e)=> setsearchTerm(e.target.value)}
-            />
-            <button className="btn btn-block" onClick=
-            {onSearchHandler}>
-                Buscar
-            </button>
-        </form>
+      {alert ? <Alert message={alert.message} type={alert.type} /> : null}
+      <form className="searchbar__form">
+        <input
+          type="text"
+          placeholder="Search For Tv Show"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button className="btn btn-block" onClick={onSearchHandler}>
+          SEARCH
+        </button>
+      </form>
     </div>
   );
 };
 
-export default Searchbar
+export default Searchbar;
